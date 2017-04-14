@@ -6,6 +6,8 @@ public class ButtonZone : MonoBehaviour {
 
 	public bool triggered = false;
 	public GameObject triggerTarget;
+	public GameObject button;
+	public Material activatedColor;
 
 	void Start () {
 		
@@ -18,9 +20,12 @@ public class ButtonZone : MonoBehaviour {
 
 	void OnTriggerStay()
 	{
-		if (Input.GetKey (KeyCode.E))
+		if (Input.GetKey (KeyCode.E) && triggered == false)
 		{
+			triggered = true;
 			triggerTarget.BroadcastMessage ("MoveToPosition", SendMessageOptions.DontRequireReceiver);
+			button.transform.Translate (Vector3.down * .03f);
+			button.GetComponent<MeshRenderer> ().material = activatedColor;
 		}
 	}
 }

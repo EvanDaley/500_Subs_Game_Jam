@@ -8,7 +8,7 @@ public class TooltipController : MonoBehaviour {
 	public static TooltipController Instance;
 	public Text tooltipText;
 
-	public float tooltipDuration = 1f;
+	public float tooltipDuration = 2f;
 	private float tooltipCooldown;
 
 	void Start () {
@@ -27,7 +27,7 @@ public class TooltipController : MonoBehaviour {
 
 	void Update()
 	{
-		if (Time.time > tooltipCooldown || Input.GetKeyDown(KeyCode.E))
+		if (Time.time > tooltipCooldown)
 		{
 			tooltipText.gameObject.SetActive (false);
 		}
