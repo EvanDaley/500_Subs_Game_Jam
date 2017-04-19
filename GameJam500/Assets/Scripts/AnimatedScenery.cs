@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class AnimatedScenery : MonoBehaviour {
 
+	public bool remainWherePlaced = false;
 	private Vector3 startPosition;
 	private Quaternion startRotation;
-	private bool shouldMove = false;
+	public bool shouldMove = false;
 	public float moveSpeed = 1f;
 	public float restHeight = -5f;
 
@@ -14,7 +15,9 @@ public class AnimatedScenery : MonoBehaviour {
 		startPosition = transform.position;
 		Vector3 restPosition = startPosition;
 		restPosition.y = restHeight;
-		transform.position = restPosition;
+
+		if(!remainWherePlaced)
+			transform.position = restPosition;
 	}
 	
 	void Update () 

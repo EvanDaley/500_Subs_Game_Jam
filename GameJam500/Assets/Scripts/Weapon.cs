@@ -4,28 +4,21 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour {
 
+	public GameObject muzzle;
 	public float fireRate = .2f;
-	public float fireCooldown;
+	private float fireCooldown;
 
 	public GameObject[] bulletPrefabs;
-	public GameObject bulletInstance;
 	int iterator = 0;
-
-	public GameObject muzzle;
-
-	void Start () {
-		
-	}
 	
 	void Update () 
 	{
-		if (Input.GetButton ("Fire1"))
+		if (Input.GetButton ("Fire1") && Time.time > fireCooldown)
 		{
-			GameObject.Instantiate (bulletPrefabs [iterator % bulletPrefabs.Length], muzzle.transform.position, muzzle.transform.rotation);
-			iterator ++;
+			fireCooldown = Time.time + fireRate;
 
-			if (iterator > bulletPrefabs.Length)
-				iterator = 0;
+			GameObject.Instantiate (bulletPrefabs [iterator], muzzle.transform.position, muzzle.transform.rotation);
+			iterator = (iterator + 1) % bulletPrefabs.Length;
 		}
 	}
 }

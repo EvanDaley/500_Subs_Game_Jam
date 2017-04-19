@@ -10,8 +10,4 @@ public class Projectile : MonoBehaviour {
 	void Start () {
 		rbody.AddForce (transform.forward * moveForce);
 	}
-	
-	void Update () {
-		
-	}
 }

@@ -11,7 +11,7 @@ public class TooltipController : MonoBehaviour {
 	public float tooltipDuration = 2f;
 	private float tooltipCooldown;
 
-	void Start () {
+	void Awake () {
 		Instance = this;
 
 		tooltipText.gameObject.SetActive (false);
